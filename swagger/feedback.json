@@ -1,0 +1,75 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Feedback tracker API"
+  },
+  "paths": {
+    "/orgs/:orgName/comments": {
+      "post": {
+        "description": "Register recurring payment job",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orgName",
+            "description": "Name of organisation",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "payload to save comment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        ],
+        "produces": ["application/json;"],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Bad request"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service unavailable",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Service unavailable"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Comment": {
+      "type": "object",
+      "description": "comment payload",
+      "properties": {
+        "comment": {
+          "description": "comment",
+          "required": true,
+          "type": "string",
+          "example": "Looking to hire SE Asia's top dev talent!"
+        }
+      }
+    }
+  }
+}

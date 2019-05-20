@@ -34,7 +34,57 @@
               "properties": {
                 "message": {
                   "type": "string",
-                  "description": "Organisation : doku successfully updated"
+                  "description": "Added comment  for Organisation : xendit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Bad request"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service unavailable",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Service unavailable"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Soft deleiton of comments for the organisation",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orgName",
+            "description": "Name of organisation",
+            "required": true
+          }
+        ],
+        "produces": ["application/json;"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Comments soft deleted for Organisation : xendit"
                 }
               }
             }

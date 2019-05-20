@@ -55,7 +55,7 @@ const deleteComments = async organisationName => {
   if (!_.isEmpty(organisationResponse)) {
     const message = `Comments soft deleted for Organisation : ${organisationName}`
     logger.info(message)
-    return message
+    return { message }
   } else {
     const messgae = `No comment deleted for organisation : ${organisationName}`
     logger.error(`${messgae}`)

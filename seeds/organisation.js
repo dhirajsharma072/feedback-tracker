@@ -33,9 +33,9 @@ exports.organisations = [
     active: true
   },
   {
-    name: 'doku',
+    name: 'paypal',
     description:
-      'doku is a payment gateway that makes payments for all kinds of businesses in Indonesia.',
+      'paypal is a payment gateway that makes payments for all kinds of businesses in Indonesia.',
     address: 'Indonesia,1500963',
     comments: [
       {

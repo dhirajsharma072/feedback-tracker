@@ -5,7 +5,7 @@
     "title": "Feedback tracker API"
   },
   "paths": {
-    "/orgs/:orgName/comments": {
+    "/orgs/{orgName}/comments": {
       "post": {
         "description": "Register recurring payment job",
         "parameters": [
@@ -28,7 +28,16 @@
         "produces": ["application/json;"],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Organisation : doku successfully updated"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad request",

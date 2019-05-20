@@ -1,6 +1,6 @@
 const Validator = require('swagger-model-validator')
 const swagger = require('./feedback.json')
-
+const Constant = require('../constant')
 /**
  * Validate input
  * @param {String} schema schema
@@ -27,12 +27,13 @@ const validate = (schema, parameterTobeValidate, req, res, next) => {
   }
   return res.status(400).send({
     status: 400,
-    Constant: Constant.MESSAGES.INVALID,
+    Constant: Constant.BAD_REQUEST,
     error: validation.GetErrorMessages()
   })
 }
 
 const saveComment = (req, res, next) => {
+  const payload = req.body
   validate('Comment', req.body, req, res, next)
 }
 

@@ -9,7 +9,7 @@ router.use('/docs', swaggerUi.serve, swaggerUi.setup(templateSwagger))
 
 router.post(
   '/orgs/:orgName/comments',
-  //   validator.saveComment,
+  validator.saveComment,
   feedbackController.saveComment
 )
 module.exports = router

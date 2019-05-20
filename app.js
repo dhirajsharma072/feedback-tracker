@@ -1,21 +1,19 @@
 const createError = require('http-errors')
 const express = require('express')
-const path = require('path')
 const http = require('http')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-
+const feedbackRouter = require('./routes/feedback')
+const { initDb } = require('./initializeDb')
 const app = express()
 app.server = http.createServer(app)
-
-//initialization of websocket
-socketInit(app.server)
 
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
+app.use('/', feedbackRouter)
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404))
@@ -29,6 +27,8 @@ app.use((err, req, res, next) => {
   res.status(err.status).json(error)
 })
 
+//Initialize database
+initDb()
 const listener = app.server.listen(
   process.env.PORT || 3000,
   '127.0.0.1',

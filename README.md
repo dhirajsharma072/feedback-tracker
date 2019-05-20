@@ -25,7 +25,8 @@ Create .env file on project base directory and configure it based on .env.exampl
 
 1. Create .env file on project base directory and configure it based on .env.example
 2. Start the server
-3. Open the [visit](http://127.0.0.1:3000/)` in the browser, by default app will run on port 3000.
+3. Open the [visit](http://127.0.0.1:3000/)` in the browser, by default app will run on port 3000. To test the api use organisation name 'xendit'
+
 4. Open this link for [api documentation](http://127.0.0.1:3000/docs)` in the browser.
 
 #### ToDo list

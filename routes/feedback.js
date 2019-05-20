@@ -12,4 +12,6 @@ router.post(
   validator.saveComment,
   feedbackController.saveComment
 )
+router.get('/orgs/:orgName/comments', feedbackController.getComment)
+
 module.exports = router

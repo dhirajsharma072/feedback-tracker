@@ -12,6 +12,18 @@ const saveComment = async (req, res, next) => {
     return next(error)
   }
 }
+const getComment = async (req, res, next) => {
+  const organisationName = req.params['orgName']
+  try {
+    const result = await feedbackService.getComment(organisationName)
+    return res.send(result)
+  } catch (error) {
+    logger.error(`An error occured while fetching  comments ${error.message}`)
+    return next(error)
+  }
+}
+
 module.exports = {
-  saveComment
+  saveComment,
+  getComment
 }

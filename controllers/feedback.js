@@ -23,7 +23,19 @@ const getComment = async (req, res, next) => {
   }
 }
 
+const deleteComments = async (req, res, next) => {
+  const organisationName = req.params['orgName']
+  try {
+    const result = await feedbackService.deleteComments(organisationName)
+    return res.send(result)
+  } catch (error) {
+    logger.error(`An error occured while fetching  comments ${error.message}`)
+    return next(error)
+  }
+}
+
 module.exports = {
   saveComment,
-  getComment
+  getComment,
+  deleteComments
 }

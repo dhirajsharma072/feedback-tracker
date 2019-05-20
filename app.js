@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
     status: err.status || 500,
     message: err.message || 'Server Error'
   }
-  res.status(err.status).json(error)
+  res.status(error.status).json(error)
 })
 
 //Initialize database

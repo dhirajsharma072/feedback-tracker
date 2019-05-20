@@ -25,21 +25,45 @@ const saveComment = async (organisationName, payload) => {
 
 const getComment = async organisationName => {
   const organisationResponse = await Orgainsation.findOne(
-    { name: organisationName },
-    { comments: 1, _id: 0 }
+    { name: organisationName, 'comments.active': true },
+    { _id: 0, comments: 1 }
   )
   const comments = _.get(organisationResponse, 'comments')
   if (comments) {
     const message = `Found comments for Organisation : ${organisationName}`
     logger.info(message)
-    return comments
+    return _.map(comments, feedback => {
+      return { comment: feedback.comment }
+    })
   } else {
     const messgae = `No comment found for organisation : ${organisationName}`
     logger.error(`${messgae}`)
     throw new Error(`${messgae}`)
   }
 }
+
+const deleteComments = async organisationName => {
+  const organisationResponse = await Orgainsation.updateOne(
+    {
+      name: organisationName,
+      'comments.active': true
+    },
+    {
+      $set: { 'comments.$.active': false }
+    }
+  )
+  if (!_.isEmpty(organisationResponse)) {
+    const message = `Comments soft deleted for Organisation : ${organisationName}`
+    logger.info(message)
+    return message
+  } else {
+    const messgae = `No comment deleted for organisation : ${organisationName}`
+    logger.error(`${messgae}`)
+    throw new Error(`${messgae}`)
+  }
+}
 module.exports = {
   saveComment,
-  getComment
+  getComment,
+  deleteComments
 }

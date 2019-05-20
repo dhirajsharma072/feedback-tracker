@@ -6,7 +6,19 @@ const organisation = {
   name: { type: String, unique: true },
   description: String,
   address: String,
-  comments: [{}],
+  comments: [
+    {
+      comment: String,
+      createdAt: {
+        type: Date,
+        default: new Date()
+      },
+      active: {
+        type: Boolean,
+        default: true
+      }
+    }
+  ],
   members: [
     {
       name: String,

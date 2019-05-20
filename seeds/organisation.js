@@ -4,6 +4,12 @@ exports.organisations = [
     description:
       'Xendit is a payment gateway that makes payments for all kinds of businesses in Indonesia painless.',
     address: 'Rukan Grand Panglima Polim Kav.78',
+    comments: [
+      {
+        comment: 'Comment while seeding the app',
+        active: true
+      }
+    ],
     members: [
       {
         name: 'Mr Xen',
@@ -31,6 +37,12 @@ exports.organisations = [
     description:
       'doku is a payment gateway that makes payments for all kinds of businesses in Indonesia.',
     address: 'Indonesia,1500963',
+    comments: [
+      {
+        comment: 'Comment while seeding the app',
+        active: true
+      }
+    ],
     members: [
       {
         name: 'Mr Pandu',

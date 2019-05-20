@@ -14,4 +14,5 @@ router.post(
 )
 router.get('/orgs/:orgName/comments', feedbackController.getComment)
 
+router.delete('/orgs/:orgName/comments', feedbackController.deleteComments)
 module.exports = router
